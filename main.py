@@ -30,8 +30,9 @@ def match_functions(split):
 def for_loop_convert(split_by_brackets):
     #Match it to c++
     # cpp_var = new_split[1]
-    c_equiv = 'for ({}, , {}) {\n "write your code here"\n}'.format()
-    
+    new_step = new_split[6] 
+    initialize_var = new_split[1]
+    c_equiv = 'for ({0}, , {1}) {\n "write your code here"\n}'.format(initialize var, new_step)
     # for i in split:
     pass
 
