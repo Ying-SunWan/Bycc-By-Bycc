@@ -1,6 +1,6 @@
 # python --> c
 dict_match={'math':'<cmath>',
-            'import':'<#include',
+            'import':'<#include>',
 }
 
 def put_in_list(strings):
@@ -11,13 +11,12 @@ def range_split(var_in_brackets):
     # split it again 
     complete_split = var_in_brackets.split() 
     return complete_split
-    pass
+
 
 def match_functions(split):
     for word in range(len(split)):
         for key in dict_match:
             if key == split[word]:
-                # new=split.replace(split[word],dict_match[key])
                 split[word]=split[word].replace(split[word],dict_match[key])
     print(split)
 
@@ -50,5 +49,6 @@ if __name__ == "__main__":
     extra_split = range_split(x)
     z=for_loop_convert(x)
     input = input_change(x)
+
     pass
 
