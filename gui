@@ -1,0 +1,43 @@
+from tkinter import *
+import tkinter as tk
+# from https://www.youtube.com/watch?v=_XTy1-PYtPE
+
+def show_answer():
+    num1.configure(state=tk.NORMAL)
+    # num2.configure(state=tk.NORMAL)
+    sum1.configure(state=tk.NORMAL)
+    # mult.configure(state=tk.NORMAL)
+
+    sum1.delete(0, 'end')
+    # mult.delete(0, 'end')
+    # x = int(num1.get())
+    x = (num1.get())
+    # y = int(num2.get())
+    # z = int(x+y)
+    # z1 = int(x*y)
+    sum1.insert(0,'boo')
+    # mult.insert(0,z1)
+    sum1.configure(state=tk.DISABLED)
+    # mult.configure(state=tk.DISABLED)
+
+main=Tk()
+
+Label(main, text = "Input Python:").grid(row=2, column=0)
+# Label(main, text = "Enter 2nd num:").grid(row=2, column=2)
+Label(main, text = "Output C++:").grid(row=2, column=2)
+# Label(main, text = "Mult of 2 num:").grid(row=3, column=2)
+num1 = Entry(main)
+# num2 = Entry(main)
+sum1 = Entry(main)
+# mult = Entry(main)
+
+num1.grid(row=2, column=1)
+# num2.grid(row=2, column=3)
+sum1.grid(row=2, column=3)
+# mult.grid(row=3, column=3)
+
+Button(main, text='Quit', command=main.destroy).grid(row=4, column=1, sticky=W, pady=6)
+Button(main, text='Show', command=show_answer).grid(row=4, column=2, sticky=W, pady=6)
+mainloop()
+
+
