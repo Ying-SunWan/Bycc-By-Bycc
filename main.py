@@ -13,13 +13,11 @@ def put_in_list(strings):
 
 
 def match_functions(split):
-    new_string=[]
     for word in range(len(split)):
         for key in dict_match:
             if key == split[word]:
                 split[word]=split[word].replace(split[word],dict_match[key])
     print(split)
-    # issue: can't print out in correct format i.e. with replaced words and with words that aren't matched
 
 def output():
     print("#include <iostream>")
