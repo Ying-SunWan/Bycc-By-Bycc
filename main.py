@@ -45,16 +45,13 @@ def input_change(inp):
     return inp
 
 def print_statements(print_state):
-    for w in range(len(print_state)):
-        if "print" in print_state:
-            element = print_state[1]
-            # length_of_message = len(element)
-            message = element[0:(len(element)-1)]
+    if "print" in print_state:
+        element = print_state[1]
+        # length_of_message = len(element)
+        message = element[0:(len(element)-1)]
 
     out = "cout << {} <<endl;".format(message)
     print("This is from print_statements: {}".format(out))
-
-
 
 
 def output():
