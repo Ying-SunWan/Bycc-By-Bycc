@@ -47,23 +47,27 @@ def input_change(inp):
     print("This is from input_change: {}".format(inp))
     return inp
 
-# print_statements(print_):
+def print_statements(print_state):
+    for w in range(len(print_state)):
+        if "print" in print_state:
+            element = print_state[2]
+            message = element[0:-2]
 
-    pass
+
 
 def output():
     print("#include <iostream>")
     print("using namespace std")
 
 if __name__ == "__main__":
-    test_string = "for var in range(start, end, step)"
+    test_string = "print(message)"
 
     split_into_string=put_in_list(test_string)
     split_by_brackets = bracket_split(split_into_string)
     match=match_functions(split_by_brackets)
     # loops=for_loop_convert(match)
     input = input_change(match)
-    # prints=print_statements(input)
+    prints=print_statements(input)
     
 
     pass
