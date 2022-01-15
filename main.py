@@ -18,8 +18,6 @@ def bracket_split(no_brack_split):
 
     print("This is from bracket_split: {} ".format (new_split))
     return new_split
-   
-
 
 def match_functions(split):
     for word in range(len(split)):
@@ -30,7 +28,7 @@ def match_functions(split):
 
     return split
 
-def for_loop_convert(split):
+def for_loop_convert(split_by_brackets):
     # taking in for var in range(start, end, step)
     
     # take out brackets?
