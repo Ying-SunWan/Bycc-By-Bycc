@@ -1,20 +1,28 @@
 # python --> c
-dict_match={}
+dict_match={'math':'<cmath>',
+            'import':'<#include',
+}
 
 def put_in_list(strings):
     split = list(strings.split())
     return split
 
 
+def match_functions(split):
+    for word in range(len(split)):
+        for key in dict_match:
+            if key == split[word]:
+                # new=split.replace(split[word],dict_match[key])
+                split[word]=split[dict_match[key]]
+    print(split)
+
 def output():
     print("#include <iostream>")
     print("using namespace std")
 
-
-def match_functions(split):
-    pass
-
 if __name__ == "__main__":
-    put_in_list("hello world words balh")
+    x=put_in_list("math world words balh")
+    y=match_functions(x)
+
 
     pass
