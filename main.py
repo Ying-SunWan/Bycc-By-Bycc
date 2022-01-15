@@ -9,8 +9,8 @@ def put_in_list(strings):
 
 def range_split(var_in_brackets):
     # split it again 
-
-    # return complete_split
+    complete_split = var_in_brackets.split() 
+    return complete_split
     pass
 
 def match_functions(split):
