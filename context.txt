@@ -1,0 +1,33 @@
+c++ lines end with ;
+include = import 
+<module> = module
+c++: use namespace std
+
+function:
+python: def name(attributes):
+            code
+            return
+c++: int name(attributes) {
+        code;
+        return 0;
+     }
+
+input:
+python: input()
+c++: type var;
+     cin >> var;
+
+print:
+python: print(message)
+c++: cout << message << endl;
+
+initializing variable:
+python: var = val 
+c++: type var = val;
+
+for:
+python: for var in range(start, end, (step)):
+            code
+c++: for (initialize var, condition, step) {
+        code;
+     }
