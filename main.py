@@ -5,12 +5,24 @@ dict_match={'math':'<cmath>',
 
 def put_in_list(strings):
     split = list(strings.split())
+    print(split)
     return split
 
-def range_split(var_in_brackets):
+def bracket_split(no_brack_split):
     # split it again 
-    complete_split = var_in_brackets.split() 
-    return complete_split
+    target = no_brack_split[3]
+    new_split = []
+    for letter in target:
+        new_split+=letter.split("(")
+    del new_split[6]
+
+    return new_split
+   
+
+# def take_out_bracket(x):
+#     target = x[4]
+#     for letter in target:
+#         del "("
 
 
 def match_functions(split):
@@ -35,7 +47,7 @@ def input_change(inp):
     for i in range(len(inp)):
         if inp[i] == "input()":
             inp[i]=inp[i].replace(inp[i],"cin")
-    print(i)
+    print(inp)
     pass
 
 def output():
@@ -45,10 +57,10 @@ def output():
 if __name__ == "__main__":
     
     x=put_in_list("for var in range(start, end, step)")
-    y=match_functions(x)
-    extra_split = range_split(x)
-    z=for_loop_convert(x)
-    input = input_change(x)
+    # match=match_functions(x)
+    # split_by_brackets = bracket_split(x)
+    # z=for_loop_convert(x)
+    # input = input_change(x)
 
     pass
 
