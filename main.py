@@ -14,7 +14,6 @@ def bracket_split(no_brack_split):
     new_split = []
     for letter in no_brack_split:
         new_split+=letter.split("(")
-    del new_split[6]
 
     print("This is from bracket_split: {} ".format (new_split))
     return new_split
@@ -48,7 +47,9 @@ def input_change(inp):
     print("This is from input_change: {}".format(inp))
     return inp
 
+# print_statements(print_):
 
+    pass
 
 def output():
     print("#include <iostream>")
@@ -56,11 +57,14 @@ def output():
 
 if __name__ == "__main__":
     test_string = "for var in range(start, end, step)"
+
     split_into_string=put_in_list(test_string)
     split_by_brackets = bracket_split(split_into_string)
     match=match_functions(split_by_brackets)
-    z=for_loop_convert(match)
-    # input = input_change(x)
+    # loops=for_loop_convert(match)
+    input = input_change(match)
+    # prints=print_statements(input)
+    
 
     pass
 
