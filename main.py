@@ -60,7 +60,8 @@ def output():
 
 if __name__ == "__main__":
     test_string = "print(message)"
-
+    # TO DO: if there are functions i.e. def, don't run bracket_split
+    
     split_into_string=put_in_list(test_string)
     split_by_brackets = bracket_split(split_into_string)
     match=match_functions(split_by_brackets)
