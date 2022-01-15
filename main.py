@@ -28,13 +28,10 @@ def match_functions(split):
     return split
 
 def for_loop_convert(split_by_brackets):
-    # taking in for var in range(start, end, step)
-    
-    # take out brackets?
-    # Want: ['for', 'var', 'in', 'range',(start,', 'end,', 'step)']
-
-    #Make sure you can index every variable/word you want
     #Match it to c++
+    cpp_var = new_split[1]
+    c_equiv = 'for ({}, , {}) {\n "write your code here"\n}'.format()
+    
     # for i in split:
     pass
 
