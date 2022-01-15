@@ -1,10 +1,6 @@
 # python --> c
 dict_match={'math':'<cmath>',
-            # 'import':'<#include',
-            #  time : '<ctime>', 
-            #  'sys' : '<iostream>', 
-            #  'random : '', os : '', urllib : '', re : '', cgi : '', socket : '',
-            #   string : '<string>'
+            'import':'<#include',
 }
 
 def put_in_list(strings):
@@ -16,7 +12,8 @@ def match_functions(split):
     for word in range(len(split)):
         for key in dict_match:
             if key == split[word]:
-                split[word]=split[word].replace(split[word],dict_match[key])
+                # new=split.replace(split[word],dict_match[key])
+                split[word]=split[dict_match[key]]
     print(split)
 
 def output():
@@ -24,9 +21,13 @@ def output():
     print("using namespace std")
 
 if __name__ == "__main__":
-    string = "math world words balh"
-    x=put_in_list(string)
+    x=put_in_list("math world words balh")
     y=match_functions(x)
 
 
     pass
+
+def for_loop_convert():
+    python_loops = (list)
+    for i in python_loops:
+        
