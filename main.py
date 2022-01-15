@@ -18,7 +18,7 @@ def match_functions(split):
         for key in dict_match:
             if key == split[word]:
                 # new=split.replace(split[word],dict_match[key])
-                split[word]=split[dict_match[key]]
+                split[word]=split[word].replace(split[word],dict_match[key])
     print(split)
 
 def for_loop_convert(split):
@@ -31,6 +31,13 @@ def for_loop_convert(split):
     # for i in split:
     pass
 
+def input_change(inp):
+    for i in range(len(inp)):
+        if inp[i] == "input()":
+            inp[i]=inp[i].replace(inp[i],"cin")
+    print(i)
+    pass
+
 def output():
     print("#include <iostream>")
     print("using namespace std")
@@ -41,6 +48,6 @@ if __name__ == "__main__":
     y=match_functions(x)
     extra_split = range_split(x)
     z=for_loop_convert(x)
-
+    input = input_change(x)
     pass
 
