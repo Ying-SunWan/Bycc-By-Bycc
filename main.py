@@ -29,7 +29,7 @@ def match_functions(split):
 
 def for_loop_convert(split_by_brackets):
     #Match it to c++
-    cpp_var = new_split[1]
+    # cpp_var = new_split[1]
     c_equiv = 'for ({}, , {}) {\n "write your code here"\n}'.format()
     
     # for i in split:
@@ -47,14 +47,19 @@ def input_change(inp):
 def print_statements(print_state):
     for w in range(len(print_state)):
         if "print" in print_state:
-            element = print_state[2]
-            message = element[0:-2]
+            element = print_state[1]
+            # length_of_message = len(element)
+            message = element[0:(len(element)-1)]
+
+    out = "cout << {} <<endl;".format(message)
+    print("This is from print_statements: {}".format(out))
+
 
 
 
 def output():
     print("#include <iostream>")
-    print("using namespace std")
+    print("using namespace std;")
 
 if __name__ == "__main__":
     test_string = "print(message)"
