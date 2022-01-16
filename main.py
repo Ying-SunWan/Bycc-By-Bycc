@@ -54,8 +54,9 @@ def input_statements(inp):
     return joined_str, loop
 
 def main_convert(string):
-    new_main = "int main(){"
-    return new_main
+    string = " "
+    # add_newline=True
+    return string
 
 def print_statements(py_str):
     c_str = ""
