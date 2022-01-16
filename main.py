@@ -152,7 +152,7 @@ def translate_py_to_cpp(input_string):
             final_translation += (c_line + '\n')
 
     final_translation = "#include <iostream>\nusing namespace std;\n" + f"{import_line}\n{def_line}\n" + "\nint main()\n{\n" + final_translation
-    # final_translation += 'return 0;\n}'
+    final_translation += 'return 0;\n}'
     return final_translation
 
 if __name__ == "__main__" :
