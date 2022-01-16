@@ -136,7 +136,7 @@ def translate_py_to_cpp(input_string):
         elif 'def' in py_line:
             def_line += function_convert(py_line)
             c_line = ""
-  	add_newline = False
+            add_newline = False
             in_func = True
         else:
             c_line = ""  # assumes if no keywords found then it's blank
