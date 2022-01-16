@@ -96,7 +96,7 @@ def translate_py_to_cpp(input_string):
             c_line = input_statements(py_line)
             
         elif 'for' in py_line and 'in' in py_line:
-            c_line = for_loop_convert(py_line)  # maybe also pass next_py_line)
+            c_line,loop = for_loop_convert(py_line)  # maybe also pass next_py_line)
         elif 'return' in py_line:
             c_line = return_and_curly(py_line)
         elif '=' in py_line:
