@@ -6,6 +6,7 @@ dict_match={'math':'<cmath>',
 def put_in_list(strings):
     split = list(strings.split())
     #print("This is from put_in_list: {}".format(split))
+    
     return split
 
 def bracket_split(no_brack_split):
@@ -42,7 +43,7 @@ def input_change(inp):
         if inp[i] == "input()":
             inp[i]=inp[i].replace(inp[i],"cin >>")
 
-    #print("This is from input_change: {}".format(inp))
+    print("This is from input_change: {}".format(inp))
     return inp
 
 def print_statements(print_state):
@@ -55,13 +56,12 @@ def print_statements(print_state):
     return out
     #print("This is from print_statements: {}".format(out))
 
-
 def output():
     print("#include <iostream>")
     print("using namespace std;")
 
 def all(test_string):
-    test_string='print(message)'
+    test_string='input(message)'
     # TO DO: if there are functions i.e. def, don't run bracket_split
     
     split_into_string=put_in_list(test_string)
