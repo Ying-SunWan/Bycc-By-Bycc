@@ -42,7 +42,7 @@ def print_statements(py_str):
 
     
 def initialize_var(string):
-    string = "int "+string+ ";"
+    string = "int "+string.strip()+ ";"
     return string
 
 def function_convert(string):
