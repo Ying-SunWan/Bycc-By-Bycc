@@ -6,7 +6,6 @@ CONTENT OF THIS README FILE
 
 * Introduction
 * Included files in the repo
-* Requirements
 * Instructions
 * Restrictions
 
@@ -21,10 +20,6 @@ INCLUDED FILES
 - main.py
 - gui.py
 - README.md
-
-REQUIREMENTS
-------------
-
 
 INSTRUCTIONS
 ------------
