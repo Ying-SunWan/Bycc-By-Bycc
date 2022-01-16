@@ -75,38 +75,52 @@ def output():
 
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
-list_of_lines = input_string.split('\n')
-final_translation = ""
+    list_of_lines = input_string.split('\n')
+    final_translation = ""
 
-for py_line in list_of_lines:
-    c_line = ""
+    for py_line in list_of_lines:
+        c_line = ""
 
-    if 'print(' in py_line:
-        c_line = print_statements(py_line)
-    elif 'input(' in py_line:
-        c_line = input_statements(py_line)
-    elif 'for' in py_line and 'in' in py_line:
-        c_line = for_loop_statement(py_line)
-    elif 'return' in py_line:
-        c_line = __()
-    else:
-        c_line = ""  # assumes if no keywords found then it's blank
-    final_translation += (c_line + '\n')
+        if 'print(' in py_line:
+            c_line = print_statements(py_line)
+        elif 'input(' in py_line:
+            c_line = input_statements(py_line)
+        elif 'for' in py_line and 'in' in py_line:
+            c_line = for_loop_statement(py_line)
+        elif 'return' in py_line:
+            c_line = __()
+        else:
+            c_line = ""  # assumes if no keywords found then it's blank
+        final_translation += (c_line + '\n')
 
-return final_translation
+    return final_translation
 
 print(translate_py_to_cpp((input_string)))
+
+
+
 if __name__ == "__main__" :
-    test_string='return var'
-    # TO DO: if there are functions i.e. def, don't run bracket_split
+    input_string = """print('Hello')
+    print('World')
+    poem = 'string'
+    for char in poem:
+        print(char)
+    return"""
+
     
-    split_into_string=put_in_list(test_string)
-    # split_by_brackets = bracket_split(split_into_string)
-    # match=match_functions(split_by_brackets)
-    # loops=for_loop_convert(match)
-    # inp = input_change(match)
-    # prints=print_statements(inp)
-    # variables = initialize_var(split_into_string)
-    # functions=function_convert(split_into_string)
-    end_of_func=return_and_curly(split_into_string)
+    # print(translate_py_to_cpp((input_string)))
+    # test_string='return var'
+    # # TO DO: if there are functions i.e. def, don't run bracket_split
+    
+    # split_into_string=put_in_list(test_string)
+    # # split_by_brackets = bracket_split(split_into_string)
+    # # match=match_functions(split_by_brackets)
+    # # loops=for_loop_convert(match)
+    # # inp = input_change(match)
+    # # prints=print_statements(inp)
+    # # variables = initialize_var(split_into_string)
+    # # functions=function_convert(split_into_string)
+    # end_of_func=return_and_curly(split_into_string)
+    
+    
    
