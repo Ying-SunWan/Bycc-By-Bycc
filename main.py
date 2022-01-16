@@ -50,12 +50,12 @@ def input_statements(inp):
     var_split=list(inp.split('='))
     var_split[1]=var_split[1].replace(var_split[1],"cin >>")
     joined_str = "int {}; \n{} {};".format(var_split[0].strip(),var_split[1],var_split[0].strip())
-    return joined_str
+    loop=True
+    return joined_str, loop
 
 def main_convert(string):
     new_main = "int main(){"
-    loop=True
-    return new_main, loop
+    return new_main
 
 def print_statements(py_str):
     c_str = ""
@@ -81,9 +81,11 @@ def return_and_curly(string):
     while("" in string_list) :
         string_list.remove("")
     string=' '.join(string_list)
+    if len(string_list)==2:
+        string_out = string_list[0] + " " + string_list[1] + ";\n}"
+    elif len(string_list)==1:
+        string_out = string + " 0;" + "\n"+"}"
 
-    string_out = string + " 0;" + "\n"+"}"
-    
     return string_out
     
 
@@ -92,7 +94,6 @@ def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
     final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n"
     loop = False
-
 
     for py_line in list_of_lines:
         c_line = ""
@@ -107,9 +108,10 @@ def translate_py_to_cpp(input_string):
             c_line = print_statements(py_line)
             
         elif 'input(' in py_line:
-            c_line = input_statements(py_line)
+            c_line,loop = input_statements(py_line)
         elif 'main' in py_line:
-            c_line,loop = main_convert(py_line)
+            c_line = main_convert(py_line)
+
         elif 'for' in py_line and 'in' in py_line:
             c_line,loop = for_loop_convert(py_line)  # maybe also pass next_py_line)
         elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
@@ -129,12 +131,15 @@ def translate_py_to_cpp(input_string):
             c_line = ""  # assumes if no keywords found then it's blank
         final_translation += (c_line + '\n')
 
-    final_translation += 'return 0;\n}'
+    if 'return' in final_translation:
+        final_translation += ' '
+    else:
+        final_translation +=  'return 0;\n}'
     return final_translation
 
 
 if __name__ == "__main__" :
-    input_string = "if __name__ == '__main__':"
+    input_string = "return var"
     
     
     print(translate_py_to_cpp((input_string)))
