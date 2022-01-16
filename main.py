@@ -90,7 +90,7 @@ def return_and_curly(string):
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
-    final_translation = "#include <iostream>\nusing namespace std;\n\n"
+    final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n"
     loop = False
 
 
@@ -129,6 +129,7 @@ def translate_py_to_cpp(input_string):
             c_line = ""  # assumes if no keywords found then it's blank
         final_translation += (c_line + '\n')
 
+    final_translation += 'return 0;\n}'
     return final_translation
 
 
