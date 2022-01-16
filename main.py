@@ -87,13 +87,21 @@ def return_and_curly(string):
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
-    final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n"
+    final_translation = ""
     loop = False
+    add_newline = True
+    import_line = ""
+
 
 
     for py_line in list_of_lines:
         c_line = ""
 
+
+        if 'import' in py_line:
+            import_line += (match_functions(py_line) + '\n')
+            c_line = ""
+            add_newline = False
         if '\t' in py_line and loop==True:
             final_translation += '\t'
         elif '\t' not in py_line and loop==True:
@@ -107,7 +115,7 @@ def translate_py_to_cpp(input_string):
             c_line = input_statements(py_line)
             
         elif 'for' in py_line and 'in' in py_line:
-            c_line,loop = for_loop_convert(py_line)  # maybe also pass next_py_line)
+            c_line,loop = for_loop_convert(py_line)
         elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
             c_line, loop= if_convert(py_line)
         elif 'while ' in py_line:
@@ -118,13 +126,19 @@ def translate_py_to_cpp(input_string):
             c_line=initialize_var(py_line)
         elif 'def' in py_line:
             c_line=function_convert(py_line)
-        elif 'import'in py_line:
-            c_line=match_functions(py_line)
-        
         else:
             c_line = ""  # assumes if no keywords found then it's blank
-        final_translation += (c_line + '\n')
 
+        if add_newline==False:
+            final_translation += (c_line)
+            add_newline = True
+        else:
+            final_translation += (c_line + '\n')
+
+    if import_line!="":
+        final_translation = "#include <iostream>\n" + f"{import_line}" + "using namespace std;\n\nint main()\n{\n" + final_translation
+    else:
+        final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n" + final_translation
     final_translation += 'return 0;\n}'
     return final_translation
 
