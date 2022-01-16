@@ -1,14 +1,10 @@
 TO DO:
-    - figure out how to translate functions
-        - somehow add curly brackets before and after the content
-        - recognize def 
     - Add more matching modules
-    - How to format it so we can just call a main function 
-             OR
-        - just call a bunch of small functions
-    - initializing variableles
+    
     - figure out any other differences/things we can translate
-
+        - if statements
+        - while
+        - header
 ---------
 GUI:
     - scaling when resizing window

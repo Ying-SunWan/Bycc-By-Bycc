@@ -64,10 +64,6 @@ def return_and_curly(string):
     return string_out
     
 
-def output():
-    print("#include <iostream>")
-    print("using namespace std;")
-
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
