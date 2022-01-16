@@ -48,11 +48,14 @@ def while_convert(str):
 
 def input_statements(inp):
     var_split=list(inp.split('='))
-    # var_split[0]=var_split[0].replace(var_split[0],var_split[0][4:])
     var_split[1]=var_split[1].replace(var_split[1],"cin >>")
     joined_str = "int {}; \n{} {};".format(var_split[0].strip(),var_split[1],var_split[0].strip())
     return joined_str
 
+def main_convert(string):
+    new_main = "int main(){"
+    loop=True
+    return new_main, loop
 
 def print_statements(py_str):
     c_str = ""
@@ -105,7 +108,8 @@ def translate_py_to_cpp(input_string):
             
         elif 'input(' in py_line:
             c_line = input_statements(py_line)
-            
+        elif 'main' in py_line:
+            c_line,loop = main_convert(py_line)
         elif 'for' in py_line and 'in' in py_line:
             c_line,loop = for_loop_convert(py_line)  # maybe also pass next_py_line)
         elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
@@ -129,15 +133,9 @@ def translate_py_to_cpp(input_string):
 
 
 if __name__ == "__main__" :
-    input_string = "    var=input()"
+    input_string = "if __name__ == '__main__':"
     
-    """print('Hello')
-    print('World')
-    input(message)
-    poem = 'string'
-    for char in poem:
-        print(char)
-    return"""
+    
     print(translate_py_to_cpp((input_string)))
     
     
