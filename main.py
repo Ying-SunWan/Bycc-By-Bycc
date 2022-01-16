@@ -24,6 +24,27 @@ def for_loop_convert(str):
     loop = True
     return new_string, loop
 
+def if_convert(str):
+    if 'elif ' in str:
+        new_string = str.replace('elif ', 'else if (')
+        new_string = new_string.replace(':', ') {')
+        loop = True
+    elif 'if ' in str:
+        new_string = str.replace(' ','(', 1)
+        new_string = new_string.replace(':', ') {')
+        loop = True
+    else:
+        new_string = str.replace(':', ' {')
+        loop = True
+
+    return new_string, loop
+
+def while_convert(str):
+    new_string = str.replace(' ','(', 1)
+    new_string = new_string.replace(':', ') {')
+    loop = True
+    return new_string, loop
+
 
 def input_statements(inp):
     var_split=list(inp.split('='))
@@ -87,6 +108,10 @@ def translate_py_to_cpp(input_string):
             
         elif 'for' in py_line and 'in' in py_line:
             c_line,loop = for_loop_convert(py_line)  # maybe also pass next_py_line)
+        elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
+            c_line, loop= if_convert(py_line)
+        elif 'while ' in py_line:
+            c_line, loop= while_convert(py_line)
         elif 'return' in py_line:
             c_line = return_and_curly(py_line)
         elif '=' in py_line:
