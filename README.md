@@ -25,8 +25,8 @@ INSTRUCTIONS
 ------------
 1. Download the two .py files (gui.py and main.py) into the same directory. This is because these two files work hand in hand for the program to execute successfully. The gui.py imports the main function translate_py_to_cpp from main.py.
 2. After succesfully downloading the two files, open a new terminal, either in a Virtual Machine or the main computer, and run the command $cd name_of_directory, where name_of_directory is the name of the directory in which the two .py files are located in.
-3. Next, after you are in the directory, run the command $python gui.py. This opens an interface that displays two sections: Python code and C++ code. 
-4. Run the python code you wish to translate and click translate and the equivalent C++ code with show up in the second section. 
+3. Next, after you are in the directory, run the command $python gui.py. This opens an interface that displays two sections: Input Python and Output C++. 
+4. Type the python code you wish to translate and click translate and the equivalent C++ code with show up in the second section. 
 
 RESTRICTIONS
 ------------
