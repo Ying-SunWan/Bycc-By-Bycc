@@ -44,6 +44,7 @@ def input_statements(inp):
     
     return joined_str
 
+
 def print_statements(py_str):
     c_str = ""
     var = py_str.replace('print(', "", 1).replace(')', "", 1)
@@ -53,6 +54,9 @@ def print_statements(py_str):
     
 def initialize_var(string_list):
     string_list.insert(0, "int")
+    empty_str=""
+    x=string_list.join(empty_str)
+    return (string_list.join(empty_str))
     print("This is from initialize_var: {}".format(string_list))
 
 def function_convert(string_list):
