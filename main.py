@@ -10,8 +10,7 @@ def put_in_list(strings):
     return split
 
 def bracket_split(no_brack_split):
-    # split it again 
-    # target = no_brack_split[3]
+    
     new_split = []
     for letter in no_brack_split:
         new_split+=letter.split("(")
@@ -27,6 +26,7 @@ def match_functions(split):
     #print("This is from match: {}".format(split))
 
     return split
+
 '''
 def for_loop_convert(split_by_brackets):
     #Match it to c++
@@ -43,7 +43,7 @@ def input_change(inp):
         if inp[i] == "input()":
             inp[i]=inp[i].replace(inp[i],"cin >>")
 
-    print("This is from input_change: {}".format(inp))
+    # print("This is from input_change: {}".format(inp))
     return inp
 
 def print_statements(print_state):
@@ -51,16 +51,20 @@ def print_statements(print_state):
         element = print_state[1]
         # length_of_message = len(element)
         message = element[0:(len(element)-1)]
-
-    out = "cout << {} <<endl;".format(message)
+        out = "cout << {} <<endl;".format(message)
+        # print("This is from print_statements: {}".format(out))
+    else:
+        out = 0
+        pass
+    
     return out
-    #print("This is from print_statements: {}".format(out))
+    
 
 def output():
     print("#include <iostream>")
     print("using namespace std;")
 
-def all(test_string):
+if __name__ == "__main__" :
     test_string='input(message)'
     # TO DO: if there are functions i.e. def, don't run bracket_split
     
@@ -70,4 +74,4 @@ def all(test_string):
     # loops=for_loop_convert(match)
     inp = input_change(match)
     prints=print_statements(inp)
-    return prints
+   
