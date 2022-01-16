@@ -25,6 +25,8 @@ def show_answer():
         
 
 main = tk.Tk()
+main.title("Bycc-by-Bycc Code Translator")
+
 # screen_w = main.winfo_screenwidth()
 # screen_h = main.winfo_screenheight()
 # screen_str = str(screen_w) + 'x' + str(screen_h)
@@ -32,16 +34,21 @@ main = tk.Tk()
 # main.geometry(screen_str)
 # main.attributes("-fullscreen", True)
 
-tk.Label(main, text="Input Python:").grid(row=0, column=0, pady=6, sticky=tk.E+tk.W)
-tk.Label(main, text="Output C++:").grid(row=0, column=1, pady=6, sticky=tk.E+tk.W)
+tk.Label(main, text="Input Python:").grid(row=0, column=0, pady=6, padx=6, sticky=tk.W)
+tk.Label(main, text="Output C++:").grid(row=0, column=1, pady=6, padx=6, sticky=tk.W)
 
 # inp_code = tk.Text(main, width=int(main.winfo_screenwidth()/14))
 inp_code = tk.Text(main)
 out = tk.Text(main)
-inp_code.grid(row=1, column=0, pady=6, padx=6)
-out.grid(row=1, column=1, pady=6, padx=6)
+inp_code.grid(row=1, column=0, pady=6, padx=6, sticky=tk.S)
+out.grid(row=1, column=1, pady=6, padx=6, sticky=tk.S)
 
-tk.Button(main, text='Close', command=main.destroy).grid(row=2, column=0, sticky=tk.W, pady=6)
-tk.Button(main, text='Translate', command=show_answer).grid(row=2, column=1, sticky=tk.W, pady=6)
+# # optional:
+# inp_code.insert(1.0, "Enter Python code here")
+# out.insert(1.0, "Press Translate button to see C++ code here")
+
+
+tk.Button(main, text='Close', command=main.destroy).grid(row=2, column=0, sticky=tk.W, pady=6, padx=6)
+tk.Button(main, text='Translate', command=show_answer).grid(row=2, column=1, sticky=tk.W, pady=6, padx=6)
 
 tk.mainloop()
