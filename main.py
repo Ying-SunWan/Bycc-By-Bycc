@@ -1,6 +1,7 @@
 # python --> c
 dict_match={'math':'<cmath>',
             'import':'#include',
+            'random':'<random>',
 }
 
 def put_in_list(strings):
