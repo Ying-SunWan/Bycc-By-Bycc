@@ -97,10 +97,6 @@ def translate_py_to_cpp(input_string):
 
     return final_translation
 
-print(translate_py_to_cpp((input_string)))
-
-
-
 if __name__ == "__main__" :
     input_string = """print('Hello')
     print('World')
