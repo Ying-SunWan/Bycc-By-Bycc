@@ -27,8 +27,9 @@ def for_loop_convert(str):
 
 def input_statements(inp):
     var_split=list(inp.split('='))
+    # var_split[0]=var_split[0].replace(var_split[0],var_split[0][4:])
     var_split[1]=var_split[1].replace(var_split[1],"cin >>")
-    joined_str = "int {}; \n{} {};".format(var_split[0],var_split[1],var_split[0])
+    joined_str = "int {}; \n{} {};".format(var_split[0].strip(),var_split[1],var_split[0].strip())
     
     return joined_str
 
@@ -108,7 +109,7 @@ def translate_py_to_cpp(input_string):
 
 
 if __name__ == "__main__" :
-    input_string = "def hello():"
+    input_string = "    var=input()"
     
     """print('Hello')
     print('World')
