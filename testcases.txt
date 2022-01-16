@@ -1,0 +1,20 @@
+print(hello)
+
+import math 
+import random
+print(goodbye)
+
+if __name__ == '__main__'
+    print(yes)
+
+while x>2:
+    c=input()
+
+def func():
+    if x<3:
+
+for x in range(2,3):
+    print(2)
+
+def func():
+    x=input()
