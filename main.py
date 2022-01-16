@@ -8,14 +8,6 @@ def put_in_list(strings):
     print("This is from put_in_list: {}".format(split))
     return split
 
-def bracket_split(no_brack_split):
-    
-    new_split = []
-    for letter in no_brack_split:
-        new_split+=letter.split("(")
-    del new_split[6]
-    print("This is from bracket_split: {} ".format (new_split))
-    return new_split
 
 def match_functions(split):
     for word in range(len(split)):
