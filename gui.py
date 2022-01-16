@@ -1,5 +1,5 @@
 import tkinter as tk
-from main import all
+from main import translate_py_to_cpp
 # from https://www.youtube.com/watch?v=_XTy1-PYtPE
 
 # import translate_to_c from main
@@ -12,12 +12,17 @@ def show_answer():
     out.delete(1.0, 'end-1c')  # clear out box
 
     inp = (inp_code.get(1.0, 'end-1c'))
-    split_inp = inp.split('\n')
     output_code = ""
-    for line in split_inp:
-        translated_line = all(line)
-        output_code += (translated_line + '\n')
-        out.insert(1.0, output_code)  # send output to out box
+    output_code = translate_py_to_cpp(inp)
+    out.insert(1.0, output_code)  # send output to out box
+    
+#     split_inp = inp.split('\n')
+    
+#     for line in split_inp:
+#         translated_line = all(line)
+#         output_code += (translated_line + '\n')
+#         out.insert(1.0, output_code)  # send output to out box
+        
 
 main = tk.Tk()
 # screen_w = main.winfo_screenwidth()
