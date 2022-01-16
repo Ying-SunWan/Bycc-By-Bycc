@@ -132,19 +132,7 @@ if __name__ == "__main__" :
     return"""
     print(translate_py_to_cpp((input_string)))
     
-    # print(translate_py_to_cpp((input_string)))
-    # test_string='return var'
-    # # TO DO: if there are functions i.e. def, don't run bracket_split
     
-    # split_into_string=put_in_list(input_string)
-    # # split_by_brackets = bracket_split(split_into_string)
-    # # match=match_functions(split_by_brackets)
-    # # loops=for_loop_convert(match)
-    # # inp = input_change(match)
-    # # prints=print_statements(inp)
-    # # variables = initialize_var(split_into_string)
-    # # functions=function_convert(split_into_string)
-    # end_of_func=return_and_curly(split_into_string)
     
     
    
