@@ -20,7 +20,7 @@ def for_loop_convert(str):
     new_string = str.replace(' ', '(int ', 1)
     new_string = new_string.replace(' in ', ' : ')
     new_string = new_string.replace('range(','{')
-    new_string = new_string.replace(')', '}) {')
+    new_string = new_string.replace('):', '}) {')
     loop = True
     return new_string, loop
 
