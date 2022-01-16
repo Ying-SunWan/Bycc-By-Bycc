@@ -1,6 +1,6 @@
 # python --> c
 dict_match={'math':'<cmath>',
-            'import':'<#include>',
+            'import':'#include',
 }
 
 def put_in_list(strings):
@@ -10,14 +10,16 @@ def put_in_list(strings):
     return split
 
 
-def match_functions(split):
+def match_functions(string):
+    split=list(string.split(' '))
     for word in range(len(split)):
         for key in dict_match:
             if key == split[word]:
                 split[word]=split[word].replace(split[word],dict_match[key])
-    print("This is from match: {}".format(split))
+    
+    joined=' '.join(split)
 
-    return split
+    return joined
 
 
 def for_loop_convert(str):
@@ -56,19 +58,22 @@ def initialize_var(string):
     string = "int "+string+ ";"
     return string
 
-def function_convert(string_list):
+def function_convert(string):
+    string_list=list(string.split(''))
     string_list.append('{')
     string_list[string_list.index('def')] = 'int'
-    print("This is from function_convert: {}".format(string_list))
+    joined=' '.join(string_list)
+    return joined
 
-def return_and_curly(string_list):
-    string_list.append(';')
-    string_list.append('}')
+def return_and_curly(string):
+    string_list=list(string.split(' '))
+    while("" in string_list) :
+        string_list.remove("")
+    string=' '.join(string_list)
+
+    string_out = string + " 0;" + "\n"+"}"
     
-    print("This is from return_and_curly: {}".format(string_list))
-    
-    print(' '.join(map(str, string_list[0:3])))
-    print(string_list[3])
+    return string_out
     
 
 def output():
@@ -102,6 +107,11 @@ def translate_py_to_cpp(input_string):
             c_line = return_and_curly(py_line)
         elif '=' in py_line:
             c_line=initialize_var(py_line)
+        elif 'def' in py_line:
+            c_line=function_convert(py_line)
+        elif 'import'in py_line:
+            c_line=match_functions(py_line)
+        
         else:
             c_line = ""  # assumes if no keywords found then it's blank
         final_translation += (c_line + '\n')
@@ -110,7 +120,8 @@ def translate_py_to_cpp(input_string):
 
 
 if __name__ == "__main__" :
-    input_string = "var = 8"
+    input_string = """:
+            return"""
     
     """print('Hello')
     print('World')
