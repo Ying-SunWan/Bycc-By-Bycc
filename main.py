@@ -6,8 +6,8 @@ dict_match={'math':'<cmath>',
 def put_in_list(strings):
     split = list(strings.split())
     
-    print("This is from put_in_list: {}".format(string_form))
-    return string_form
+    print("This is from put_in_list: {}".format(split))
+    return split
 
 
 def match_functions(split):
@@ -38,12 +38,11 @@ def for_loop_convert(str):
 
 
 def input_statements(inp):
-    for i in range(len(inp)):
-        if inp[i] == "input()":
-            inp[i]=inp[i].replace(inp[i],"cin >>")
-
-    print("This is from input_change: {}".format(inp))
-    return inp
+    var_split=list(inp.split('='))
+    var_split[1]=var_split[1].replace(var_split[1],"cin >>")
+    joined_str = "int {}; \n{} {};".format(var_split[0],var_split[1],var_split[0])
+    
+    return joined_str
 
 def print_statements(py_str):
     c_str = ""
@@ -88,7 +87,7 @@ def translate_py_to_cpp(input_string):
             
         elif 'input(' in py_line:
             c_line = input_statements(py_line)
-            c_line = ','.join(c_line)
+            
         elif 'for' in py_line and 'in' in py_line:
             c_line = for_loop_convert(py_line)
         elif 'return' in py_line:
@@ -100,11 +99,8 @@ def translate_py_to_cpp(input_string):
     return final_translation
 
 
-
-
-
 if __name__ == "__main__" :
-    input_string = "input(message)"
+    input_string = "var = input(message)"
     
     """print('Hello')
     print('World')
