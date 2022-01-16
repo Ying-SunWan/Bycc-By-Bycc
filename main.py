@@ -67,7 +67,7 @@ def return_and_curly(string):
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
-    final_translation = "#include <iostream>\nusing namespace std;\n"
+    final_translation = "#include <iostream>\nusing namespace std;\n\n"
     loop = False
 
 
