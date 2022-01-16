@@ -97,6 +97,8 @@ def translate_py_to_cpp(input_string):
     loop = False
     add_newline = True
     import_line = ""
+    def_line = ""
+    in_func = False
 
     for py_line in list_of_lines:
         c_line = ""
@@ -110,7 +112,10 @@ def translate_py_to_cpp(input_string):
         elif '\t' not in py_line and loop==True:
             final_translation += '}\n'
             loop = False
-
+        
+        if '\t' not in py_line and in_func==True:
+            in_func = False
+            
         if 'print(' in py_line:
             c_line = print_statements(py_line)
             
@@ -118,8 +123,6 @@ def translate_py_to_cpp(input_string):
             c_line,loop = input_statements(py_line)
         elif 'main' in py_line:
             c_line = main_convert(py_line)
-
-
         elif 'for' in py_line and 'in' in py_line:
             c_line,loop = for_loop_convert(py_line)
         elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
@@ -131,25 +134,25 @@ def translate_py_to_cpp(input_string):
         elif '=' in py_line:
             c_line=initialize_var(py_line)
         elif 'def' in py_line:
-            c_line=function_convert(py_line)
+            def_line += function_convert(py_line)
+            c_line = ""
+  	add_newline = False
+            in_func = True
         else:
             c_line = ""  # assumes if no keywords found then it's blank
+        if in_func==True:
+            def_line += (c_line + '\n')
+            c_line = ""
+            add_newline = False
 
-    # # if 'return' in final_translation:
-    # #     final_translation += ' '
-    # # else:
-    # #     final_translation +=  'return 0;\n}'
         if add_newline==False:
             final_translation += (c_line)
             add_newline = True
         else:
             final_translation += (c_line + '\n')
 
-    if import_line!="":
-        final_translation = "#include <iostream>\nusing namespace std;\n" + f"{import_line}" + "\nint main()\n{\n" + final_translation
-    else:
-        final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n" + final_translation
-    final_translation += 'return 0;\n}'
+    final_translation = "#include <iostream>\nusing namespace std;\n" + f"{import_line}\n{def_line}\n" + "\nint main()\n{\n" + final_translation
+    # final_translation += 'return 0;\n}'
     return final_translation
 
 if __name__ == "__main__" :
