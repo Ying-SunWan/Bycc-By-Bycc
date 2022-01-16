@@ -18,16 +18,22 @@ def match_functions(split):
 
     return split
 
-'''
+
 def for_loop_convert(split_by_brackets):
     #Match it to c++
     # cpp_var = new_split[1]
-    new_step = new_split[6] 
-    initialize_var = new_split[1]
-    c_equiv = 'for ({0}, , {1}) {\n "write your code here"\n}'.format(initialize var, new_step)
+    # new_step = new_split[6] 
+    # initialize_var = new_split[1]
+    # c_equiv = 'for ({0}, , {1}) {\n "write your code here"\n}'.format(initialize var, new_step)
     # for i in split:
+
+    #Ying's Code
+    str = 'for x in range(1,4)'
+    if 'for ' in str:
+        new_string = str.replace(' ', '(int ', 1)
+        new_string = new_string.replace(' in ', ' : ')
     pass
-'''
+
 
 def input_change(inp):
     for i in range(len(inp)):
