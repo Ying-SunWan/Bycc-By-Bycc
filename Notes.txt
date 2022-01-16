@@ -6,6 +6,9 @@ TO DO:
         - while
         - header
         - main function if name = main --> main function
+    - create another function that just outputs
+    - if code senses more than one def function, call header and call translate for that one function
+        - while it has tab character
 ---------
 GUI:
     - scaling when resizing window
