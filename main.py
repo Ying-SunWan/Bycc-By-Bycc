@@ -6,8 +6,8 @@ dict_match={'math':'<cmath>',
 def put_in_list(strings):
     split = list(strings.split())
     
-    print("This is from put_in_list: {}".format(split))
-    return split
+    print("This is from put_in_list: {}".format(string_form))
+    return string_form
 
 
 def match_functions(split):
@@ -20,7 +20,7 @@ def match_functions(split):
     return split
 
 
-def for_loop_convert(split_by_brackets):
+def for_loop_convert(str):
     #Match it to c++
     # cpp_var = new_split[1]
     # new_step = new_split[6] 
@@ -81,12 +81,14 @@ def translate_py_to_cpp(input_string):
     final_translation = ""
 
     for py_line in list_of_lines:
-        c_line = []
+        c_line = ""
 
         if 'print(' in py_line:
             c_line = print_statements(py_line)
+            
         elif 'input(' in py_line:
             c_line = input_statements(py_line)
+            c_line = ','.join(c_line)
         elif 'for' in py_line and 'in' in py_line:
             c_line = for_loop_convert(py_line)
         elif 'return' in py_line:
@@ -97,24 +99,27 @@ def translate_py_to_cpp(input_string):
 
     return final_translation
 
-print(translate_py_to_cpp((input_string)))
+
 
 
 
 if __name__ == "__main__" :
-    input_string = """print('Hello')
+    input_string = "input(message)"
+    
+    """print('Hello')
     print('World')
+    input(message)
     poem = 'string'
     for char in poem:
         print(char)
     return"""
-
+    print(translate_py_to_cpp((input_string)))
     
     # print(translate_py_to_cpp((input_string)))
     # test_string='return var'
     # # TO DO: if there are functions i.e. def, don't run bracket_split
     
-    # split_into_string=put_in_list(test_string)
+    # split_into_string=put_in_list(input_string)
     # # split_by_brackets = bracket_split(split_into_string)
     # # match=match_functions(split_by_brackets)
     # # loops=for_loop_convert(match)
