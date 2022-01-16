@@ -33,4 +33,6 @@ RESTRICTIONS
 Because this program is so basic and we were required to finish this under 24 hours, there are some restrictions that we have put in order for the program to work. These restrictions include:
 - all return values are of integer type
 - for loops in python are in the format: for variable in range()
+- assumes that there is no input message i.e. in the format variable=input()
+- assumes that iostream and using namespace std are the default headers
 - 

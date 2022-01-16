@@ -157,7 +157,6 @@ def translate_py_to_cpp(input_string):
 if __name__ == "__main__" :
     input_string = "return var"
     
-    
     print(translate_py_to_cpp((input_string)))
     
     
