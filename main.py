@@ -83,7 +83,7 @@ def return_and_curly(string):
         string_list.remove("")
     string=' '.join(string_list)
     if len(string_list)==2:
-        string_out = string_list[0] + " " + string_list[1] + ";\n}"
+        string_out = string_list[0].strip + " " + string_list[1] + ";\n}"
     elif len(string_list)==1:
         string_out = string + " 0;" + "\n"+"}"
 
@@ -107,9 +107,9 @@ def translate_py_to_cpp(input_string):
             import_line += (match_functions(py_line) + '\n')
             c_line = ""
             add_newline = False
-        if '\t' in py_line and loop==True:
-            final_translation += '\t'
-        elif '\t' not in py_line and loop==True:
+        #if '\t' in py_line and loop==True:
+            #final_translation += '\t'
+        if '\t' not in py_line and loop==True:
             final_translation += '}\n'
             loop = False
         
