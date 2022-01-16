@@ -30,7 +30,6 @@ def input_statements(inp):
     # var_split[0]=var_split[0].replace(var_split[0],var_split[0][4:])
     var_split[1]=var_split[1].replace(var_split[1],"cin >>")
     joined_str = "int {}; \n{} {};".format(var_split[0].strip(),var_split[1],var_split[0].strip())
-    
     return joined_str
 
 
