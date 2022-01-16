@@ -5,6 +5,7 @@ dict_match={'math':'<cmath>',
 
 def put_in_list(strings):
     split = list(strings.split())
+    
     print("This is from put_in_list: {}".format(split))
     return split
 
@@ -35,7 +36,7 @@ def for_loop_convert(split_by_brackets):
     pass
 
 
-def input_change(inp):
+def input_statements(inp):
     for i in range(len(inp)):
         if inp[i] == "input()":
             inp[i]=inp[i].replace(inp[i],"cin >>")
@@ -62,7 +63,7 @@ def function_convert(string_list):
 def return_and_curly(string_list):
     string_list.append(';')
     string_list.append('}')
-    #When printing?
+    
     print("This is from return_and_curly: {}".format(string_list))
     
     print(' '.join(map(str, string_list[0:3])))
@@ -79,16 +80,16 @@ def translate_py_to_cpp(input_string):
     final_translation = ""
 
     for py_line in list_of_lines:
-        c_line = ""
+        c_line = []
 
         if 'print(' in py_line:
             c_line = print_statements(py_line)
         elif 'input(' in py_line:
             c_line = input_statements(py_line)
         elif 'for' in py_line and 'in' in py_line:
-            c_line = for_loop_statement(py_line)
+            c_line = for_loop_convert(py_line)
         elif 'return' in py_line:
-            c_line = __()
+            c_line = return_and_curly(py_line)
         else:
             c_line = ""  # assumes if no keywords found then it's blank
         final_translation += (c_line + '\n')
