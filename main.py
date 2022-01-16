@@ -43,18 +43,12 @@ def input_change(inp):
     print("This is from input_change: {}".format(inp))
     return inp
 
-def print_statements(print_state):
-    if "print" in print_state:
-        element = print_state[1]
-        # length_of_message = len(element)
-        message = element[0:(len(element)-1)]
-        out = "cout << {} <<endl;".format(message)
-        print("This is from print_statements: {}".format(out))
-    else:
-        out = 0
-        pass
-    
-    return out
+def print_statements(py_str):
+    c_str = ""
+    var = py_str.replace('print(', "", 1).replace(')', "", 1)
+    c_str =  f"cout << {var.strip()} << endl;"
+    return c_str
+
     
 def initialize_var(string_list):
     string_list.insert(0, "int")
@@ -70,7 +64,7 @@ def return_and_curly(string_list):
     string_list.append('}')
     #When printing?
     print("This is from return_and_curly: {}".format(string_list))
-    ## Make sure to add a new line character between ; and } # when outputting
+    
     print(' '.join(map(str, string_list[0:3])))
     print(string_list[3])
     
@@ -79,6 +73,29 @@ def output():
     print("#include <iostream>")
     print("using namespace std;")
 
+##DA MAIN FUNCTION!!!!!
+def translate_py_to_cpp(input_string):
+list_of_lines = input_string.split('\n')
+final_translation = ""
+
+for py_line in list_of_lines:
+    c_line = ""
+
+    if 'print(' in py_line:
+        c_line = print_statements(py_line)
+    elif 'input(' in py_line:
+        c_line = input_statements(py_line)
+    elif 'for' in py_line and 'in' in py_line:
+        c_line = for_loop_statement(py_line)
+    elif 'return' in py_line:
+        c_line = __()
+    else:
+        c_line = ""  # assumes if no keywords found then it's blank
+    final_translation += (c_line + '\n')
+
+return final_translation
+
+print(translate_py_to_cpp((input_string)))
 if __name__ == "__main__" :
     test_string='return var'
     # TO DO: if there are functions i.e. def, don't run bracket_split
