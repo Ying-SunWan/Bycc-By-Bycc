@@ -28,11 +28,12 @@ def for_loop_convert(split_by_brackets):
     # for i in split:
 
     #Ying's Code
-    str = 'for x in range(1,4)'
+    #str = 'for x in range(1,4)'
     if 'for ' in str:
         new_string = str.replace(' ', '(int ', 1)
         new_string = new_string.replace(' in ', ' : ')
-    pass
+        new_string = new_string.replace('range(','{')
+        new_string = new_string.replace(')', '}) {')
 
 
 def input_change(inp):
