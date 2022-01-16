@@ -23,20 +23,12 @@ def match_functions(string):
 
 
 def for_loop_convert(str):
-    #Match it to c++
-    # cpp_var = new_split[1]
-    # new_step = new_split[6] 
-    # initialize_var = new_split[1]
-    # c_equiv = 'for ({0}, , {1}) {\n "write your code here"\n}'.format(initialize var, new_step)
-    # for i in split:
-
-    #Ying's Code
-    #str = 'for x in range(1,4)'
-    if 'for ' in str:
-        new_string = str.replace(' ', '(int ', 1)
-        new_string = new_string.replace(' in ', ' : ')
-        new_string = new_string.replace('range(','{')
-        new_string = new_string.replace(')', '}) {')
+    new_string = str.replace(' ', '(int ', 1)
+    new_string = new_string.replace(' in ', ' : ')
+    new_string = new_string.replace('range(','{')
+    new_string = new_string.replace(')', '}) {')
+    loop = True
+    return new_string, loop
 
 
 def input_statements(inp):
@@ -85,16 +77,17 @@ def output():
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
     final_translation = ""
-    line_count = -1
+    loop = False
 
 
     for py_line in list_of_lines:
         c_line = ""
-        line_count += 1  # list_of_lines[line_count+1]
-        if line_count==len(list_of_lines)-1:  # if last line
-            next_py_line = ""
-        else:
-            next_py_line = list_of_lines[line_count + 1]
+
+        if '\t' in py_line and loop==True:
+            final_translation += '\t'
+        elif '\t' not in py_line and loop==True:
+            final_translation += '}\n'
+            loop = False
 
         if 'print(' in py_line:
             c_line = print_statements(py_line)
