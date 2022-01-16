@@ -20,7 +20,7 @@ def for_loop_convert(str):
     new_string = str.replace(' ', '(int ', 1)
     new_string = new_string.replace(' in ', ' : ')
     new_string = new_string.replace('range(','{')
-    new_string = new_string.replace(')', '}) {')
+    new_string = new_string.replace('):', '}) {')
     loop = True
     return new_string, loop
 
@@ -71,7 +71,7 @@ def output():
 ##DA MAIN FUNCTION!!!!!
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
-    final_translation = ""
+    final_translation = "#include <iostream>\nusing namespace std;\n"
     loop = False
 
 
