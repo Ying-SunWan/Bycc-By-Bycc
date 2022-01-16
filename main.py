@@ -78,9 +78,16 @@ def output():
 def translate_py_to_cpp(input_string):
     list_of_lines = input_string.split('\n')
     final_translation = ""
+    line_count = -1
+
 
     for py_line in list_of_lines:
         c_line = ""
+        line_count += 1  # list_of_lines[line_count+1]
+        if line_count==len(list_of_lines)-1:  # if last line
+            next_py_line = ""
+        else:
+            next_py_line = list_of_lines[line_count + 1]
 
         if 'print(' in py_line:
             c_line = print_statements(py_line)
@@ -89,7 +96,7 @@ def translate_py_to_cpp(input_string):
             c_line = input_statements(py_line)
             
         elif 'for' in py_line and 'in' in py_line:
-            c_line = for_loop_convert(py_line)
+            c_line = for_loop_convert(py_line)  # maybe also pass next_py_line)
         elif 'return' in py_line:
             c_line = return_and_curly(py_line)
         else:
