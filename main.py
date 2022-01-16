@@ -52,12 +52,9 @@ def print_statements(py_str):
     return c_str
 
     
-def initialize_var(string_list):
-    string_list.insert(0, "int")
-    empty_str=""
-    x=string_list.join(empty_str)
-    return (string_list.join(empty_str))
-    print("This is from initialize_var: {}".format(string_list))
+def initialize_var(string):
+    string = "int "+string+ ";"
+    return string
 
 def function_convert(string_list):
     string_list.append('{')
@@ -96,6 +93,8 @@ def translate_py_to_cpp(input_string):
             c_line = for_loop_convert(py_line)
         elif 'return' in py_line:
             c_line = return_and_curly(py_line)
+        elif '=' in py_line:
+            c_line=initialize_var(py_line)
         else:
             c_line = ""  # assumes if no keywords found then it's blank
         final_translation += (c_line + '\n')
@@ -104,7 +103,7 @@ def translate_py_to_cpp(input_string):
 
 
 if __name__ == "__main__" :
-    input_string = "var = input(message)"
+    input_string = "var = 8"
     
     """print('Hello')
     print('World')
