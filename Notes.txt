@@ -5,6 +5,7 @@ TO DO:
         - if statements
         - while
         - header
+        - main function if name = main --> main function
 ---------
 GUI:
     - scaling when resizing window
