@@ -98,10 +98,8 @@ def translate_py_to_cpp(input_string):
     add_newline = True
     import_line = ""
 
-
     for py_line in list_of_lines:
         c_line = ""
-
 
         if 'import' in py_line:
             import_line += (match_functions(py_line) + '\n')
@@ -121,6 +119,7 @@ def translate_py_to_cpp(input_string):
         elif 'main' in py_line:
             c_line = main_convert(py_line)
 
+
         elif 'for' in py_line and 'in' in py_line:
             c_line,loop = for_loop_convert(py_line)
         elif 'if ' in py_line or 'elif ' in py_line or 'else' in py_line:
@@ -136,10 +135,10 @@ def translate_py_to_cpp(input_string):
         else:
             c_line = ""  # assumes if no keywords found then it's blank
 
-    if 'return' in final_translation:
-        final_translation += ' '
-    else:
-        final_translation +=  'return 0;\n}'
+    # # if 'return' in final_translation:
+    # #     final_translation += ' '
+    # # else:
+    # #     final_translation +=  'return 0;\n}'
         if add_newline==False:
             final_translation += (c_line)
             add_newline = True
@@ -147,16 +146,14 @@ def translate_py_to_cpp(input_string):
             final_translation += (c_line + '\n')
 
     if import_line!="":
-        final_translation = "#include <iostream>\n" + f"{import_line}" + "using namespace std;\n\nint main()\n{\n" + final_translation
+        final_translation = "#include <iostream>\nusing namespace std;\n" + f"{import_line}" + "\nint main()\n{\n" + final_translation
     else:
         final_translation = "#include <iostream>\nusing namespace std;\n\nint main()\n{\n" + final_translation
     final_translation += 'return 0;\n}'
     return final_translation
 
-
 if __name__ == "__main__" :
     input_string = "return var"
-    
     print(translate_py_to_cpp((input_string)))
     
     
