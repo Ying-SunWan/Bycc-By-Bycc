@@ -59,7 +59,8 @@ def initialize_var(string):
     return string
 
 def function_convert(string):
-    string_list=list(string.split(''))
+    string_list=list(string.split(' '))
+    string_list[1]=string_list[1].replace(string_list[1],string_list[1][0:len(string_list[1])-1])
     string_list.append('{')
     string_list[string_list.index('def')] = 'int'
     joined=' '.join(string_list)
@@ -120,8 +121,7 @@ def translate_py_to_cpp(input_string):
 
 
 if __name__ == "__main__" :
-    input_string = """:
-            return"""
+    input_string = "def hello():"
     
     """print('Hello')
     print('World')
