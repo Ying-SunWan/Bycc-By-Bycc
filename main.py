@@ -4,13 +4,6 @@ dict_match={'math':'<cmath>',
             'random':'<random>',
 }
 
-def put_in_list(strings):
-    split = list(strings.split())
-    
-    print("This is from put_in_list: {}".format(split))
-    return split
-
-
 def match_functions(string):
     split=list(string.split(' '))
     for word in range(len(split)):
